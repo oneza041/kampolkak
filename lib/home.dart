@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:maxsbc/register.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,22 +11,31 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
-        mainAxisSize: MainAxisSize.min,
+         body: Container(
+        decoration: BoxDecoration(
+          gradient: RadialGradient(center: Alignment(0,-0.5),
+          radius:1.0, 
+          colors: [Colors.white,Colors.grey],),),
+        child: Center(
+        child: Column( mainAxisSize: MainAxisSize.min,
         children: [
           buildlogo(),
           buildText(),
           buildtextfieldUser(),
           buildtextfieldPassword(),
           buildlogin(),
-          TextButton(
-            onPressed: () {},
-            child: Text('New Register'),
-          )
+          buildTextButton(),
         ],
+        )
       )),
     );
+  }
+
+  TextButton buildTextButton() {
+    return TextButton(
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> Register())),
+          child: Text('New Register'),
+        );
   }
 
   Container buildlogin() {
